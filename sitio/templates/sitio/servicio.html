@@ -1,0 +1,76 @@
+{% extends "sitio/estructure.html" %} 
+{% block titulo %} Servicios {% endblock titulo %} 
+{% load static %} 
+{% block contenido %}
+<script>const menuuu= document.getElementById('servicio'); menuuu.classList.add("active") </script>
+
+<p style="color:white"> {% block name %}Servicios{% endblock name %}<p></p>
+
+<!--================ SERVICIOS =================-->
+
+
+    <section class="course_details_area section_padding">
+          <form method="post" action="{%url 'Servicios'%}" id="buscador" class="buscador">
+            {% csrf_token %}
+                        <input type="text" placeholder="Buscar servicio" name="nombre" id="nombre" value="{{nombre_buscado}}">
+                        <select name="categoria" id="categoria" class="btn_1">
+                            <option value="NA" selected hidden>Filtrar por categoria</option>
+                            <option value="FI" {%if categoria_actual == 'FI'%} selected {%endif%}>Fotos instantáneas</option>
+                            <option value="FIO" {%if categoria_actual == 'FIO'%} selected {%endif%}>Fotos de identificación ordinarias</option>
+                        </select>
+                        <button type="submit" class="btn_1">Buscar</button>
+                        <a href="{%url 'Servicios'%}"><button type="button" class="btn_1">Mostrar todo</button></a>
+                        <select name="orden" id="orden" class="btn_1">
+                            <option value="nombreAsc" {%if orden_actual == 'nombreAsc'%} selected {%endif%}>Ordenar por nombre (A-Z)</option>
+                            <option value="nombreDesc" {%if orden_actual == 'nombreDesc'%} selected {%endif%}>Ordenar por nombre (Z-A)</option>
+                            <option value="priceDesc" {%if orden_actual == 'priceDesc'%} selected {%endif%}>Ordenar por precio (mayor a menor)</option>
+                            <option value="priceAsc"{%if orden_actual == 'priceAsc'%} selected {%endif%}>Ordenar por precio (menor a mayor)</option>
+                        </select>
+                    </form>
+        <div class="container">
+                <div class="col-lg-4 right-contents" style="max-width:1140px; display: flex;flex-wrap:wrap;flex-direction:row;gap:10px">           
+
+                    {% for serviciop in model_data %} 
+                    <div class="sidebar_top" style="min-width:250px;max-width:323px">
+                        <ul> 
+                            <li>
+                                <a class="justify-content-between d-flex">
+                                    <p class="color">{{serviciop.nombre}}</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="justify-content-between d-flex">
+                                    <p  style="font-size:14px">Precio</p>
+                                    <span>${{serviciop.precio}}MXN</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="justify-content-between d-flex">
+                                    <p  style="font-size:14px">Cantidad </p>
+                                    <span>{{serviciop.total}} foto/s</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="justify-content-between d-flex">
+                                    <p style="font-size:14px">Medidas </p>
+                                    <span> {{serviciop.anchocm}} * {{serviciop.altocm}} cm <br> {{serviciop.anchoin}} * {{serviciop.altoin}} in</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="justify-content-between d-flex">
+                                    <p style="font-size:14px">Especificaciones </p>
+                                    <span> {{serviciop.caption}}</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <a class="btn_1 d-block"  href="https://wa.me/5214431681214?text={{serviciop.generalidades}}">  <img src="{% static 'sitio/img/whatsappicon.png'%}" width="20" height="20"> Agenda tu cita</a>
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+    </section>
+<!--================ SERVICIOS =================--> 
+
+    <!--================ End Course Details Area =================-->
+{% endblock contenido %}

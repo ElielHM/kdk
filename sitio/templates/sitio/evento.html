@@ -1,0 +1,33 @@
+{% extends "sitio/estructure.html" %} 
+{% block titulo %} Eventos {% endblock titulo %} 
+{% load static %} 
+{% block contenido %}
+<script>const menuuu= document.getElementById('evento'); menuuu.classList.add("active") </script>
+<p style="color:white"> {% block name %}Cobertura de eventos{% endblock name %}<p>
+<!-- EVENTO -->
+    <section class="advance_feature learning_part">
+        <div class="container">
+
+            {% for eventop in modelo_estructure %} 
+            <div class="row align-items-sm-center align-items-xl-stretch"  id="{{eventop.nombre}}">
+                <div class="col-md-6 col-lg-6" >
+                    <div class="learning_member_text">
+                        <h5 style="color:black">EVENTOS</h5>
+                        <h2>{{eventop.nombre}}</h2>
+                        <p>¿Qué incluye? </p>
+                        <ul>
+                            <li style="font-size:16px"> {{eventop.contenido}}</li>
+                        </ul>
+                        <a class="btn_1" href="https://wa.me/5214431681214?text={{eventop.generalidades}}">  <img src="{% static 'sitio/img/whatsappicon.png'%}" width="20" height="20"> Solicita cotización</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <img src="/media/{{eventop.imagen}}" alt="">
+                </div>
+            </div>
+            {% endfor %} 
+        </div>
+    </section>
+<!--fin de evento-->
+
+{% endblock contenido %}

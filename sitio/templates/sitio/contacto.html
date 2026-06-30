@@ -1,0 +1,116 @@
+{% extends "sitio/estructure.html" %} 
+{% block titulo %} Contacto {% endblock titulo %} 
+{% load static %} 
+{% block contenido %}
+<script>const menuuu= document.getElementById('contacto'); menuuu.classList.add("active") </script>
+
+<!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d358.920969590503!2d-100.96839436466897!3d19.789626074449124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842d3d4ff609af0b%3A0xde9d47d8adfcf807!2sAldama%201%2C%20Centro%2C%2058970%20Indaparapeo%2C%20Mich.!5e0!3m2!1ses-419!2smx!4v1781127346523!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+
+<p style="color:white"> {% block name %}Contáctanos{% endblock name %}<p>
+
+    <section style="padding-top: 50px;  padding-bottom: 50px;">
+        <div class="container centrado">
+            <div class="row">
+                <div class="col-lg-8 course_details_left">
+                    <div class="main_image">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d358.920969590503!2d-100.96839436466897!3d19.789626074449124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842d3d4ff609af0b%3A0xde9d47d8adfcf807!2sAldama%201%2C%20Centro%2C%2058970%20Indaparapeo%2C%20Mich.!5e0!3m2!1ses-419!2smx!4v1781127346523!5m2!1ses-419!2smx" width="750" height="584.6" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 right-contents">
+                    <div class="sidebar_top no-margin">
+                        <ul>
+                            <li style="font-size:16px">
+                                    <p>Dirección</p>
+                                    <span class="color">Aldama 1, centeo, Indaparapeo, Mich.</span>
+                            </li>
+                            <li style="font-size:16px">
+                                    <p>Télefono</p>
+                                    <span style="text-align:left">+52 443 168 1214</span>
+                            </li>
+                            <li style="font-size:16px">
+                                    <p>Horario </p>
+                                    <span>Lunes - Viernes: <br> 09:00 am - 06:30 pm <br><br> Sábados: <br> 10:00 am - 02:00 pm <br><BR> Domingos: <br> 11:00 am - 02:00 pm</span>
+                            </li>
+                            <li style="font-size:16px">
+                                    <p>Indicaciones </p>
+                                    <span>Contaesquina de la presidencia<br>  municipal</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>   
+
+<div class="formContainer">
+    <div class="contactoForm">
+    <h2> ¿Buscas algo más específico? </h3>
+        <form action="" method="post" id="formContacto" class="buscador">
+                {% csrf_token %}
+                <div class="formGrupo">
+                    <label for="formNombre">Nombre <span style="color:red">*<span></label>
+                    <input type="text" placeholder="Ingresa tu nombre" id="formNombre" name="nombre" required>
+                </div>
+            
+                <div class="formGrupo">
+                    <label for="formDir">Dirección <span style="color:red" id="labelDir"><span></label>
+                    <input type="text" placeholder="Ingresa la dirección" id="formDir" name="direccion" required>
+                </div>
+
+
+                <div class="formGrupo">
+                    <label for="formTime">Hora <span style="color:red">*<span></label>
+                    <input type="time" placeholder="" id="formTime" name="hora" required>
+                </div>
+            
+                <div class="formGrupo">
+                    <label for="formDate">Fecha <span style="color:red">*<span></label>
+                    <input type="date" placeholder="" id="formDate" name="fecha" required>
+                </div>
+
+
+                <div class="formGrupo formSingle">
+                    <label for="formSelec">Me interesa un: <span style="color:red">*<span></label>
+                    <select id="formSelec" name="selector" class="btn_1">
+                        <option value="ser">Servicio</option>
+                        <option value="eve">Evento</option>
+                    </select>
+                </div>
+
+
+                <div class="formGrupo">
+                    <label for="formSer">Servicios<span style="color:red" id="labelSer"><span></span></label>
+                    <select id="formSer" name="servicio" class="btn_1" required>
+                        <option value="" selected disabled hidden>-Selecciona una opcion-</option>
+                        {%for servicio in servicio%}
+                        <option value="{{servicio.nombre}}">{{servicio.nombre}}</option>
+                        {%endfor%}
+                    </select>
+                </div>
+
+
+                <div class="formGrupo">
+                    <label for="formEvent">Eventos<span style="color:red" id="labelEve"><span></span></label>
+                    <select id="formEvent" name="evento" disabled class="btn_1" required>
+                        <option value="" selected disabled hidden>-Selecciona una opcion-</option>
+                        {%for evento in evento%}
+                        <option value="{{evento.nombre}}" data-pronombre="{{evento.pronombre}}">{{evento.nombre}}</option>
+                        {%endfor%}
+                    </select>
+                </div>
+
+
+                <button class="btn_1 formSingle" type="submit" id="formConSub"><img class='img-nav' src="{% static 'sitio/img/whatsappicon.png'%}" align="center" width="20" height="20"> Contáctanos</button>
+        </form>
+    </div>
+</div>
+
+    <br>
+    <script src="{% static 'sitio/js/contacto.js'%}"></script>
+  
+{% endblock contenido %}
+
+
+        

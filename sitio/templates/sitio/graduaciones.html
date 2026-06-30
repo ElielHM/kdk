@@ -1,0 +1,43 @@
+{% extends "sitio/estructure.html" %} 
+{% block titulo %} Paquetes para graduaciones {% endblock titulo %} 
+{% load static %} 
+
+{% block contenido %}
+<script>const menuuu= document.getElementById('graduaciones'); menuuu.classList.add("active") </script>
+
+<p style="color:white"> {% block name %}Graduaciones{% endblock name %}<p></p>
+
+<!-- PAQUETES -->
+    <section class="advance_feature learning_part">
+        <div class="container">
+
+            {% for paquetes in datos%} 
+            <br><br>
+            <div class="row align-items-sm-center align-items-xl-stretch">
+                <div class="col-md-6 col-lg-6">
+                    <div class="learning_member_text">
+                        <h5 style="color:black" id="{{paquetes.nombre}}">PAQUETES PARA GRADUACIONES</h5>
+                        <h2>{{paquetes.nombre}}</h2>
+                        <p> ¿Qué incluye? </p>
+                        <ul>
+                            <li style="font-size:16px" >{{paquetes.contenido |safe}}</li>
+                        </ul>
+                        <h3>${{paquetes.costo}} MXN</h3>
+                        <a class="btn_1" href="https://wa.me/5214431681214?text={{paquetes.mensaje}}">  <img src="{% static 'sitio/img/whatsappicon.png'%}" width="20" height="20"> Solicita cotización </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    {% if request.user_agent.is_mobile %}
+                        <img src="/media/{{paquetes.imagen_movil}}" alt="">
+                    {% else %}
+                        <img src="/media/{{paquetes.imagen}}" alt="">
+                    {% endif %}
+                    
+                </div>
+            </div>
+            {% endfor %} 
+        </div>
+    </section>
+<!--fin de paquetes-->
+
+{%endblock contenido%}

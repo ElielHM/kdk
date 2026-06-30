@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block titulo %} {% endblock titulo %}</title>
+    <!--<link href="{% static 'sitio/css/bootstrap.css' %}" rel="stylesheet">-->
+    <link rel="icon" type="image/x-icon" href="{% static "sitio/img/iconn.ico" %}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'sitio/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'sitio/css/animate.css' %}" >
+     <link rel="stylesheet" href="{% static 'sitio/css/aos.css' %}">
+      <link rel="stylesheet" href="{% static 'sitio/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'sitio/css/owl.carousel.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'sitio/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'sitio/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'sitio/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'sitio/css/swiper.min.css' %}">
+</head>
+
+
+<body>
+      <header class="main_menu single_page_menu">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        {% block logoindex %}
+                        <a class="navbar-brand logo_1" href="{% url 'index' %}"> <img id="logoindex" src="{% static "sitio/img/logo_2.png"%}" width="40%" height="40%" alt="logo"> </a>
+                        {% endblock logoindex%}
+                        
+                        <a class="navbar-brand logo_2" href="{% url 'index' %}"> <img src="{% static "sitio/img/logo.png"%}" width="40%" height="40%" alt="logo"> </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse main-menu-item justify-content-end"
+                            id="navbarSupportedContent">
+                            <ul class="navbar-nav align-items-center">
+                                <li class="nav-item">
+                                    <a id="index" class="nav-link" href="{% url 'index' %}">Inicio</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a id="about"  class="nav-link" href="{% url 'about' %}">¿Quiénes somos?</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a id="servicio"  class="nav-link" href="{% url 'Servicios' %}">Servicios</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a id="evento" class="nav-link dropdown-toggle justify-content-between d-flex" href="{%url 'evento'%}" id="navbarDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
+                                        Eventos
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        {% for eventop in modelo_estructure %} 
+                                        <a class="dropdown-item" href="#{{eventop.nombre}}">{{eventop.nombre}} </a>
+                                        {% endfor %}    
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a id="graduaciones" class="nav-link" href="{%url 'graduaciones'%}">Paquetes para graduaciones</a>
+                                </li> 
+                                <li class="nav-item">
+                                    <a id="contacto" class="nav-link" href="{%url 'contacto'%}">Contacto</a>
+                                </li> 
+                                <li class="d-none d-lg-block ">
+                                    <a class="btn_1 d-block wts-btn" href="https://wa.me/5214431681214"> <img class='img-nav' src="{% static 'sitio/img/whatsappicon.png'%}" align="center" width="20" height="20"> Contáctanos</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {%block pan%}
+    <section class="breadcrumb breadcrumb_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb_iner text-center">
+                        <div class="breadcrumb_iner_item">
+                            <h2>{% block name %}{% endblock name %}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {%endblock pan%}
+
+  {% block contenido %}
+
+  {%endblock contenido%}
+  
+
+      <!-- footer part start-->
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-sm-6 col-md-4 col-xl-3">
+                    <div class="single-footer-widget footer_1">
+                        <a href="{% url 'index' %}"> <img src="{% static 'sitio/img/logo.png'%}" alt="Logotipito extentido, KODAK Digital Indaparapeo"> </a>
+                        <p> </p>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-xl-4">
+                    <div class="single-footer-widget footer_2">
+                        <h4> Horario </h4>
+                        <p>Lunes - Viernes: <br> 09:00 am - 06:30 pm <br> Sábados: <br> 10:00 am - 02:00 pm <br> Domingos: <br> 11:00 am - 02:00 pm</p>
+                      </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-md-4">
+                    <div class="single-footer-widget footer_2">
+                        <h4>Contáctanos</h4>
+                        <div class="contact_info">
+                            <p><span> Dirección: </span> Aldama 1, centro, Indaparapeo, Michoacán.  CP. 58970</p>
+                            <p><span> Télefono: </span> +52 443 168 1214</p>
+                            <p><span> Correo electrónico: </span>lucypt7@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- footer part end-->
+ 
+        <script src="{% static 'sitio/js/jquery-1.12.1.min.js' %}"></script>
+        <!-- popper js -->
+        <script src="{% static 'sitio/js/popper.min.js' %}"></script>
+        <!-- bootstrap js -->
+        <script src="{% static 'sitio/js/bootstrap.min.js' %}"></script>
+        <!-- easing js -->
+        <script src="{% static 'sitio/js/jquery.magnific-popup.js'%}"></script>
+        <!-- swiper js -->
+        <script src="{% static 'sitio/js/swiper.min.js'%}"></script>
+        <!-- swiper js -->
+        <script src="{% static 'sitio/js/masonry.pkgd.js'%}"></script>
+        <!-- particles js -->
+        <script src="{% static 'sitio/js/owl.carousel.min.js'%}"></script>
+        <script src="{% static 'sitio/js/jquery.nice-select.min.js'%}"></script>
+        <!-- swiper js -->
+        <script src="{% static 'sitio/js/slick.min.js'%}"></script>
+        <script src="{% static 'sitio/js/jquery.counterup.min.js'%}"></script>
+        <script src="{% static 'sitio/js/waypoints.min.js'%}"></script>
+        <!-- custom js -->
+        <script src="{% static 'sitio/js/custom.js'%}"></script>
+
+    </body>
+  
+</html>

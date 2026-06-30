@@ -1,0 +1,130 @@
+{% extends "sitio/estructure.html" %} 
+{% block titulo %} KODAK {% endblock titulo %}
+{% load static %} 
+{% block logoindex %}
+    <a class="navbar-brand logo_1" href="{% url 'index' %}"> <img id="logoindex" src="{% static "sitio/img/logo.png"%}" width="40%" height="40%" alt="logo"> </a>
+{% endblock logoindex%}
+
+{% block contenido %}
+<script>const menuuu= document.getElementById('index'); menuuu.classList.add("active") </script>
+
+<div class="paralanding">
+        <section class="learning_part">
+        <div class="container">
+            <div class="row align-items-sm-center align-items-lg-stretch">
+                <div class="col-md-5 col-lg-5">
+                    <br><BR>
+                    <img src="{% static 'sitio/img/landing.png'%} " alt="">
+                </div>
+                <div class="col-md-7 col-lg-7">
+                    <br><BR><br>
+                   <div class="banner_text">
+                        <div class="banner_text_iner">
+                            <h5 style="color:black">Capturamos lo que amas con la calidad que mereces</h5> <BR>
+                            <h1>Transforma instantes en recuerdos que perdurarán para siempre</h1> <br>
+                            <p style="font-family: 'Century Gothic'">KODAK Indaparapeo es un estudio fotográfico encargado de cubrir los eventos más importantes de tu vida, inmortalizando todos aquellos recuerdos importantes</p><br>
+                            <a href="{% url 'Servicios' %}" class="btn_1">Servicios</a>
+                            <a href="{% url 'evento' %}" class="btn_2">Eventos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div>
+        {%block pan%}
+                    
+        {%endblock pan%}
+
+<!-- ABOUT -->
+    <section class="learning_part">
+        <div class="container">
+            <div class="row align-items-sm-center align-items-lg-stretch">
+                <div class="col-md-7 col-lg-7">
+                    <img src="{% static 'sitio/img/inicioo.png'%} " alt="">
+                </div>
+                <div class="col-md-5 col-lg-5">
+                    <div class="learning_member_text">
+                        <h5>Sobre nosotros</h5>
+                        <h2>Fotografía que emociona y perdura</h2>
+                        <p>Cada fotografía es más que una imagen: es un reflejo de emociones, detalles y experiencias únicas. Nos apasiona inmortalizar lo que hace especial tu vida.</p>
+                        <ul>
+                            <li style="font-size:16px"<span class="ti-pencil-alt"></span>Fotografía</li>
+                            <li style="font-size:16px"<span class="ti-pencil-alt"></span>Vídeo</li>
+                            <li style="font-size:16px"<span class="ti-pencil-alt"></span>Invitaciones</li>
+                            <li style="font-size:16px"<span class="ti-pencil-alt"></span>Lonas</li>
+                        </ul>
+                        <a href="{%url 'about'%}" class="btn_1">Ver más</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- ABOUT -->
+
+<!--SERVICIOS DESTACATOS db name= serviciopop pop 4 popular-->
+    <section class="special_cource padding_top">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-5">
+                    <div class="section_tittle text-center">
+                        <p>SERVICIOS POPULARES</p>
+                        <h2>Servicios frecuentes</h2>
+                    </div>
+                </div>
+            </div>
+            {% for serviciopop in modelo %} 
+            <div class="row">
+                <div class="col-sm-6 col-lg-4">
+                    <div class="single_special_cource">
+                        <!--height_field=200, width_field=360, -->
+                        <img src="/media/{{serviciopop.foto}}" style="width:360" class="special_img" alt="">
+                        <div class="special_cource_text">
+                            <a href="{%url 'Servicios'%}" class="btn_4"> {{serviciopop.nombre}} </a>
+                            <h4>${{serviciopop.precio}} MNX </h4>
+                            <a href="{%url 'Servicios'%}"><h3>{{serviciopop.nombre}}</h3></a>
+                            <p>{{serviciopop.caption}}</p>
+                        </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+<!--Fin de servicios destacades-->
+
+<!--SECCIÓN DE DOS ÍCONOS -->
+    <section class="advance_feature learning_part">
+        <div class="container">
+            <div class="row align-items-sm-center align-items-xl-stretch">
+                <div class="col-md-6 col-lg-6">
+                    <div class="learning_member_text">
+                        <h5>NUESTRO ENFOQUE</h5>
+                        <h2>Enfocados en tí</h2>
+                        <p>Ofrecemos la calidad que mereces, a través de nuestro</p>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-12 col-lg-6">
+                                <div class="learning_member_text_iner">
+                                    <span class="ti-pencil-alt"><img src="{% static 'sitio/img/personal.png'%}" alt="ícono de persona verificada"></span>
+                                    <h4>Personal capacitado</h4>
+                                    <p>Atendiéndote siempre con amabilidad y disponibilidad, siempre atentos para resolver tus dudas.</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-12 col-lg-6">
+                                <div class="learning_member_text_iner">
+                                    <span class="ti-stamp"> <img src="{% static 'sitio/img/equipo.png'%}" alt="ícono de una cámara"> </span>
+                                    <h4>Equipo adecuado</h4>
+                                    <p>Con cámaras que capturan tu escencia y papel de la mejor calidad para tus fotografías físicas.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <img src=" {% static 'sitio/img/paraelindex.png'%} " alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+<!--fin de sección de dos íconos-->
+
+{% endblock contenido %}
